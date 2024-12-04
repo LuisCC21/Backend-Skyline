@@ -1,9 +1,14 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize(process.env.database, process.env.userDB, process.env.passwordDB, {
-  host: process.env.hostDB,
+export const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
-  port: process.env.portDB
+  protocol: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  }
 });
 
 const connectDb = async () => {
