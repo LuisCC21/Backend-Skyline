@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 
 export const sequelize = new Sequelize(process.env.database, process.env.userDB, process.env.passwordDB, {
   host: process.env.hostDB,
-  dialect: "mssql",
+  dialect: process.env.typeDB,
   port: process.env.portDB,
 });
 
