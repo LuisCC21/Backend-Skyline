@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize("skyline", "root", "admin", {
-  host: "localhost",
+export const sequelize = new Sequelize(process.env.database, process.env.userDB, process.env.passwordDB, {
+  host: process.env.hostDB,
   dialect: "mssql",
-  //port:'1433'
+  port: process.env.portDB,
 });
 
 const connectDb = async () => {
